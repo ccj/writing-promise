@@ -13,32 +13,29 @@
                 reject(1);
             }, 100);
         })
-        prom1.then(
-            (value) => {
-                console.log('onResolved1', value);
-            },
-            (reason) => {
-                console.log('onRejected1', reason);
-            }
-        ).then(
-            (value) => {
-                console.log('onResolved2', value);
-            },
-            (reason) => {
-                console.log('onRejected2', reason);
-            }
-        );
-
         const prom2 = Promise.resolve(2);
         const prom3 = Promise.resolve(Promise.resolve(3));
         const prom4 = Promise.reject(4);
-        const prom5 = Promise.all([prom2, prom3]);
+        const prom5 = Promise.all([prom2, 8, prom3]);
+        const prom6 = Promise.race([prom1, 8, prom3, prom2]);
+
+        prom1.then(
+            value => console.log('prom1 onResolved1', value),
+            reason => console.log('prom1 onRejected1', reason)
+        ).then(
+            value => console.log('prom1 onResolved2', value),
+            reason => console.log('prom1 onRejected2', reason)
+        );
         prom2.then(value => console.log('prom2', value));
         prom3.then(value => console.log('prom3', value));
         prom4.catch(reason => console.log('prom4', reason));
         prom5.then(
             value => console.log('prom5 onResolved', value),
             reason => console.log('prom5 onRejected', reason)
+        );
+        prom6.then(
+            value => console.log('prom6 onResolved', value),
+            reason => console.log('prom6 onRejected', reason)
         );
         
 
