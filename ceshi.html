@@ -8,27 +8,37 @@
 <body>
     <script src="./lib/Es5-Promise.js"></script>
     <script>
-        const p = new Promise((resolve, reject) => {
+        const prom1 = new Promise((resolve, reject) => {
             setTimeout(() => { // 模拟异步延迟执行
                 reject(1);
             }, 100);
         })
-        p.then(
+        prom1.then(
             (value) => {
                 console.log('onResolved1', value);
             },
             (reason) => {
                 console.log('onRejected1', reason);
             }
-        )
-        p.then(
+        ).then(
             (value) => {
                 console.log('onResolved2', value);
             },
             (reason) => {
                 console.log('onRejected2', reason);
             }
-        )
+        );
+
+        const prom2 = Promise.resolve(2);
+        const prom3 = Promise.resolve(Promise.resolve(3));
+        const prom4 = Promise.reject(4);
+        const prom5 = Promise.all([prom2, prom3]);
+        prom2.then(value => console.log('prom2', value));
+        prom3.then(value => console.log('prom3', value));
+        prom4.catch(reason => console.log('prom4', reason));
+        prom5.then(value => console.log('prom5', value));
+        
+
     </script>
 </body>
 </html>
