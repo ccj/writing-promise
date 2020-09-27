@@ -6,7 +6,7 @@
     <title>手写Promise-测试文件</title>
 </head>
 <body>
-    <script src="./lib/Es5-Promise.js"></script>
+    <script src="./lib/Es6-Promise.js"></script>
     <script>
         const prom1 = new Promise((resolve, reject) => {
             setTimeout(() => { // 模拟异步延迟执行
@@ -37,8 +37,6 @@
             value => console.log('prom6 onResolved', value),
             reason => console.log('prom6 onRejected', reason)
         );
-        
-
     </script>
 </body>
 </html>
