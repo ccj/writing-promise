@@ -34,6 +34,14 @@ promise：启动异步任务=> 返回promie 对象=> 给promise 对象绑定回�
 6.Promise.all 方法: (promises) => {}  
 7.Promise.race 方法: (promises) => {}  
 
+## 终极解决方案async/await的使用！
+async: async定义的异步函数返回一个promise   
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function  
+await：await右部等待一个值。如果是promise，则返回promise成功时的返回值，promise失败的值需要在try/catch中捕获。如果不是promise，则返回改值。  
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/await
+
+async可以单独使用，await使用时其当前所在函数必须为async修饰。
+
 ## 手写一个promise吧！
 ```
 /**
